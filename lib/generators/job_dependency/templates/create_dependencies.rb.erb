@@ -1,0 +1,12 @@
+# This migration creates the `dependencies` table
+class <%= dependency_table_name.camelize %> < ActiveRecord::Migration<%= migration_version %>
+  def change
+    create_table :<%= dependency_table_name %> do |t|
+      t.integer :type
+      t.integer :source_id
+      t.integer :destination_id
+      t.timestamps null: false
+    end
+    add_index :<%= dependency_table_name %>, %i(source_id destination_id)
+  end
+end

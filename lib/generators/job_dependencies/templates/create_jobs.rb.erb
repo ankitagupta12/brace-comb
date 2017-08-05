@@ -1,8 +1,0 @@
-# This migration creates the `jobs` table
-class CreateJobs < ActiveRecord::Migration<%= migration_version %>
-  def change
-    create_table :jobs do |t|
-      t.timestamps null: false
-    end
-  end
-end
