@@ -1,4 +1,4 @@
-# JobDependencies
+# JobDependency
 
 Allows setting dependency logic between jobs, and setting rules to resolve the dependencies
 
@@ -10,10 +10,10 @@ Allows setting dependency logic between jobs, and setting rules to resolve the d
 
 2. Create an initializer for `job_dependency` 
 
-    a. `bundle exec rails generate job_dependency:initializer`
-    b. Modify the name of dependency and dependent tables in the initializer `config/initializers/job_dependency.rb`
-    c. Run `bundle exec rails generate job_dependency:migration` to create the migration
-    d. Finally create the dependency tables and associations using`bundle exec rake db:migrate`
+    2a. `bundle exec rails generate job_dependency:initializer`
+    2b. Modify the name of dependency and dependent tables in the initializer `config/initializers/job_dependency.rb`
+    2c. Run `bundle exec rails generate job_dependency:migration` to create the migration
+    2d. Finally create the dependency tables and associations using`bundle exec rake db:migrate`
 
 ## Contributing
 
