@@ -1,4 +1,4 @@
-# This migration creates the `jobs` table
+# This migration creates the dependent table
 class <%= dependent_table_name.camelize %> < ActiveRecord::Migration<%= migration_version %>
   def change
     create_table :<%= dependent_table_name %> do |t|

@@ -16,7 +16,10 @@ Allows setting dependency logic between jobs, and setting rules to resolve the d
     
     c. Run `bundle exec rails generate job_dependency:migration` to create the migration
     
-    d. Finally create the dependency tables and associations using`bundle exec rake db:migrate`
+    d. Create the dependency tables and associations using `bundle exec rake db:migrate`
+    
+    e. Generate the basic dependency model by running:
+       ```bundle exec rails generate job_dependency:model <insert Dependency table name here>```
 
 ## Contributing
 

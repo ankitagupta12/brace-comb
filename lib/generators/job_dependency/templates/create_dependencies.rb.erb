@@ -3,6 +3,7 @@ class <%= dependency_table_name.camelize %> < ActiveRecord::Migration<%= migrati
   def change
     create_table :<%= dependency_table_name %> do |t|
       t.integer :type
+      t.integer :status
       t.integer :source_id
       t.integer :destination_id
       t.timestamps null: false
