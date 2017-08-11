@@ -61,7 +61,7 @@ Allows setting dependency logic between jobs, and setting rules to resolve the d
    ```
      dependency.resolve(identifier: 123, status: :resolved)
    ```
-   Any arguments passed to resolve! methods will be directly sent to the resolver. So arguments should be sent based on the resolver definition
+   Any arguments passed to `resolve!` methods will be directly sent to the resolver. So arguments should be sent based on the resolver definition
 
 ## Under consideration
    - Allowing dependency declaration to accept multiple resolvers, and allowing resolve to accept the name of the resolver. This could possibly by done in `resolve` method itself instead of `declare_dependency`
