@@ -3,7 +3,7 @@ module JobDependency
     module ClassMethods
       # declare_dependency
       #   type: :shopping
-      #   resolver: [:shopping_complete, :deliverer_scan, Proc.new {}]
+      #   resolver: :shopping_completed
       #   before_resolved: [:completed_status?]
       #   after_resolved: :complete_job, Proc.new {}
       # Options:
