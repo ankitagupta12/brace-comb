@@ -2,5 +2,5 @@ source "https://rubygems.org"
 
 git_source(:github) {|repo_name| "https://github.com/#{repo_name}" }
 
-# Specify your gem's dependencies in job_dependency.gemspec
+# Specify your gem's dependencies in brace_comb.gemspec
 gemspec

@@ -1,11 +1,11 @@
 require 'dry-configurable'
 
-require 'job_dependency/version'
-require 'job_dependency/config'
-require 'job_dependency/dependency_model'
-require 'job_dependency/dependency_helper'
+require 'brace_comb/version'
+require 'brace_comb/config'
+require 'brace_comb/dependency_model'
+require 'brace_comb/dependency_helper'
 
-module JobDependency
+module BraceComb
   class << self
     # return config
     def config
@@ -28,7 +28,7 @@ module JobDependency
 end
 
 ActiveSupport.on_load(:active_record) do
-  include JobDependency::Helper
+  include BraceComb::Helper
 end
 
 

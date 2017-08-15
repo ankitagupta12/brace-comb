@@ -1,4 +1,4 @@
-module JobDependency
+module BraceComb
   module Exceptions
     class CallbackFailure < StandardError
       def initialize(msg = 'Callback failed')

@@ -1,6 +1,6 @@
 require 'rails/generators'
 require 'rails/generators/active_record'
-module JobDependency
+module BraceComb
   # Installs job dependencies migrations
   class MigrationGenerator < Rails::Generators::Base
     include ::Rails::Generators::Migration
@@ -15,11 +15,11 @@ module JobDependency
     private
 
     def dependent_table_name
-      ::JobDependency.config.dependent_table_name.pluralize.downcase
+      ::BraceComb.config.dependent_table_name.pluralize.downcase
     end
 
     def dependency_table_name
-      ::JobDependency.config.dependency_table_name.pluralize.downcase
+      ::BraceComb.config.dependency_table_name.pluralize.downcase
     end
 
     def add_migrations(table_name, template)

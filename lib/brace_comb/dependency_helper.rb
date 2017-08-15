@@ -1,4 +1,4 @@
-module JobDependency
+module BraceComb
   module Helper
     module ClassMethods
       # declare_dependency
@@ -59,7 +59,7 @@ module JobDependency
       end
 
       def dependency_model
-        ::JobDependency.dependency_model.constantize
+        ::BraceComb.dependency_model.constantize
       end
 
       # private_class_method :dependency_mapping_value, :set_dependency_mapping

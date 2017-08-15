@@ -1,6 +1,6 @@
-require 'job_dependency/exceptions/callback_failure'
+require 'brace_comb/exceptions/callback_failure'
 
-module JobDependency
+module BraceComb
   module Model
     module InstanceMethods
       # throws an exception if before callbacks return false
@@ -21,7 +21,7 @@ module JobDependency
       # rolls back the transaction if before callbacks return false or if any exception is raised
       def resolve(args = {})
        resolve!(args)
-      rescue JobDependency::Exceptions::CallbackFailure
+      rescue BraceComb::Exceptions::CallbackFailure
         false
       end
 
@@ -34,7 +34,7 @@ module JobDependency
       def execute_before_callbacks(before_callbacks)
         before_callbacks.each do |before_callback|
           result = execute_callback(before_callback)
-          raise JobDependency::Exceptions::CallbackFailure.new unless result
+          raise BraceComb::Exceptions::CallbackFailure.new unless result
         end
       end
 

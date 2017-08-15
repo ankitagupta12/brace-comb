@@ -1,5 +1,5 @@
 # frozen_string_literal: true
-module JobDependency
+module BraceComb
   # configurator for setting up all the configurable settings for job dependency
   class Config
     extend Dry::Configurable

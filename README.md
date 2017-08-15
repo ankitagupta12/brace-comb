@@ -1,4 +1,6 @@
-# JobDependency
+# BraceComb
+
+Brace comb - a small bit of wax built between two combs or frames to fasten them together. Brace comb is also built between a comb and adjacent wood, or between two wooden parts such as top bars.
 
 Allows setting dependency logic between jobs, and setting rules to resolve the dependencies
 
@@ -6,20 +8,20 @@ Allows setting dependency logic between jobs, and setting rules to resolve the d
 
 1. Add JobDependencies to your `Gemfile`.
 
-    `gem 'job_dependency'`
+    `gem 'brace_comb'`
 
-2. Create an initializer for `job_dependency` 
+2. Create an initializer for `brace_comb` 
 
-    a. `bundle exec rails generate job_dependency:initializer`
+    a. `bundle exec rails generate brace_comb:initializer`
     
-    b. Modify the name of dependency and dependent tables in the initializer `config/initializers/job_dependency.rb`
+    b. Modify the name of dependency and dependent tables in the initializer `config/initializers/brace_comb.rb`
     
-    c. Run `bundle exec rails generate job_dependency:migration` to create the migration
+    c. Run `bundle exec rails generate brace_comb:migration` to create the migration
     
     d. Create the dependency tables and associations using `bundle exec rake db:migrate`
     
     e. Generate the basic dependency model by running:
-       ```bundle exec rails generate job_dependency:model <insert Dependency table name here>```
+       ```bundle exec rails generate brace_comb:model <insert Dependency table name here>```
 
 ## Usage
   
@@ -50,7 +52,7 @@ Allows setting dependency logic between jobs, and setting rules to resolve the d
    `initialize_dependency from: job1, to: job2, type: 'shopping'`
 4. In order to resolve a dependency, add the following to the dependency class definition (This will be done implicitly moving forward):
 
-   `include JobDependency::Model`
+   `include BraceComb::Model`
 5. Resolve dependencies by using:
    ```
      dependency.resolve!(identifier: 123, status: :resolved)

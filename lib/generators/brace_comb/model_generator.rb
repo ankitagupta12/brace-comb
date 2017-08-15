@@ -1,6 +1,6 @@
 require 'rails/generators/active_record'
 require 'pry'
-module JobDependency
+module BraceComb
   # creates job depedency initializer
   class ModelGenerator < ActiveRecord::Generators::Base
     def generate_model
@@ -27,7 +27,7 @@ module JobDependency
     private
 
     def dependency_model
-      ::JobDependency.dependency_model.to_s.underscore
+      ::BraceComb.dependency_model.to_s.underscore
     end
 
     def model_exists?()
