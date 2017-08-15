@@ -1,11 +1,11 @@
 require 'rails/generators/active_record'
-require 'pry'
+require 'brace_comb'
 module BraceComb
   # creates job depedency initializer
   class ModelGenerator < ActiveRecord::Generators::Base
     def generate_model
-      invoke "active_record:model",
-             [name],
+      invoke 'active_record:model',
+             [dependency_model],
              migration: false unless model_exists? && behavior == :invoke
     end
 
@@ -13,13 +13,13 @@ module BraceComb
       content = model_contents
 
       class_path = if namespaced?
-                     class_name.to_s.split("::")
+                     class_name.to_s.split('::')
                    else
                      [class_name]
                    end
 
       indent_depth = class_path.size - 1
-      content = content.split("\n").map { |line| "  " * indent_depth + line } .join("\n") << "\n"
+      content = content.split('\n').map { |line| '  ' * indent_depth + line } .join('\n') << '\n'
 
       inject_into_class(model_path, class_path.last, content) if model_exists?
     end

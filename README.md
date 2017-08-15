@@ -1,8 +1,8 @@
 # BraceComb
 
-Brace comb - a small bit of wax built between two combs or frames to fasten them together. Brace comb is also built between a comb and adjacent wood, or between two wooden parts such as top bars.
+Brace Comb is a small bit of wax built between two combs or frames to fasten them together. Brace comb is also built between a comb and adjacent wood, or between two wooden parts such as top bars.
 
-Allows setting dependency logic between jobs, and setting rules to resolve the dependencies
+Allows setting dependency logic between entities, and declaring resolution methods and callbacks to resolve dependencies.
 
 ## Installation
 
@@ -72,7 +72,7 @@ Allows setting dependency logic between jobs, and setting rules to resolve the d
    - And more...
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/honestbee/job_dependency. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+Bug reports and pull requests are welcome on GitHub at https://github.com/honestbee/brace_comb. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
 ## License
 

@@ -1,5 +1,5 @@
 # This migration creates the `dependencies` table
-class <%= dependency_table_name.camelize %> < ActiveRecord::Migration<%= migration_version %>
+class Create<%= dependency_table_name.camelize %> < ActiveRecord::Migration<%= migration_version %>
   def change
     create_table :<%= dependency_table_name %> do |t|
       t.integer :type

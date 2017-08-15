@@ -1,8 +1,9 @@
+require 'generators/brace_comb/generator'
 require 'rails/generators'
 require 'rails/generators/active_record'
 module BraceComb
   # Installs job dependencies migrations
-  class MigrationGenerator < Rails::Generators::Base
+  class MigrationGenerator < Generator
     include ::Rails::Generators::Migration
     source_root File.expand_path('../templates', __FILE__)
 
@@ -13,14 +14,6 @@ module BraceComb
     end
 
     private
-
-    def dependent_table_name
-      ::BraceComb.config.dependent_table_name.pluralize.downcase
-    end
-
-    def dependency_table_name
-      ::BraceComb.config.dependency_table_name.pluralize.downcase
-    end
 
     def add_migrations(table_name, template)
       migration_dir = File.expand_path("db/migrate")
