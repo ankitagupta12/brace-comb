@@ -6,11 +6,11 @@ Allows setting dependency logic between entities, and declaring resolution metho
 
 ## Background
 
-In workflow management systems, there is often a need to define that certain tasks should only begin when another task is complete.
+In workflow management systems, there is often a need to define that certain tasks should only begin when another task(s) is complete.
 
-Instead of having each workflow system define tables to denote dependency relationships between tasks, this gem provides features that can create both the dependency and dependent model. These entity names are configurable based on the project needs. 
+Instead of having each workflow system define database entities to denote dependency relationships between tasks/dependents, this gem provides features that can create both the dependency and dependent model. These entity names are configurable based on the project needs. 
 
-In addition, it accepts methods to define how a dependency can be resolved and dependency resolution callbacks. In the same vein as active record callbacks, dependency resolution callbacks can define actions that should be executed before a dependency is resolved and after a dependency is resolved. If any before callbacks fail, then dependency resolution will also fail.
+In addition, it accepts methods/procs to define the logic for dependency resolution via resolution callbacks. In the same vein as active record callbacks, dependency resolution callbacks can define actions that should be executed before a dependency is resolved and after a dependency is resolved. If any before callbacks fail, then dependency resolution will also fail.
 
 ## Installation
 
@@ -62,11 +62,14 @@ In addition, it accepts methods to define how a dependency can be resolved and d
 
    `initialize_dependency from: job1, to: job2, type: 'shopping'`
 5. Resolve dependencies from any active record model by using:
+   
+   - When an exception needs to be raised:
    ```
      dependency.resolve!(identifier: 123, status: :resolved)
    ```
    
-   or 
+   or
+   - When a boolean needs to be returned: 
    
    ```
      dependency.resolve(identifier: 123, status: :resolved)
