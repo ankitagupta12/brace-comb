@@ -34,10 +34,10 @@ describe BraceComb::MigrationGenerator, type: :generator do
             migration 'job_dependencies' do
               contains('create_table :job_dependencies do |t|')
               contains('class CreateJobDependencies < ' + parent_class)
-              contains('t.integer :type')
+              contains('t.integer :dependency_type, null: false')
               contains('t.integer :status')
-              contains('t.integer :source_id')
-              contains('t.integer :destination_id')
+              contains('t.integer :source_id, null: false')
+              contains('t.integer :destination_id, null: false')
               contains('t.timestamps null: false')
             end
             migration 'add_associations' do

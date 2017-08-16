@@ -1,6 +1,6 @@
 require 'generator_spec/test_case'
 require 'generators/brace_comb/model_generator'
-require 'pry'
+
 describe BraceComb::ModelGenerator, type: :generator do
   include GeneratorSpec::TestCase
   destination File.expand_path('../tmp', __FILE__)

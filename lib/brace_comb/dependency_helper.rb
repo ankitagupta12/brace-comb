@@ -25,26 +25,6 @@ module BraceComb
         set_dependency_mapping(dependency_mapping)
       end
 
-      # initialize_dependency from: job1, to: job2, type: 'shopping'
-      def initialize_dependency(from:, to:, type:)
-        dependency_model.create(
-          from: from,
-          to: to,
-          type: type,
-          status: :pending
-        )
-      end
-
-      # initialize_dependency from: job1, to: job2, type: 'shopping'
-      def initialize_dependency!(from:, to:, type:)
-        dependency_model.create!(
-          from: from,
-          to: to,
-          type: type,
-          status: :pending
-        )
-      end
-
       def dependency_mapping_value
         klass = dependency_model
         dependency_mapping = klass.instance_variable_get(:@dependency_mapping)
@@ -65,7 +45,34 @@ module BraceComb
       # private_class_method :dependency_mapping_value, :set_dependency_mapping
     end
 
+    module InstanceMethods
+      # initialize_dependency from: job1, to: job2, type: 'shopping'
+      def initialize_dependency(from: nil, to: nil, dependency_type: nil)
+        dependency_model.create(
+          source_id: from,
+          destination_id: to,
+          dependency_type: dependency_type,
+          status: :pending
+        )
+      end
+
+      # initialize_dependency from: job1, to: job2, type: 'shopping'
+      def initialize_dependency!(from: nil, to: nil, dependency_type: nil)
+        dependency_model.create!(
+          source_id: from,
+          destination_id: to,
+          dependency_type: dependency_type,
+          status: :pending
+        )
+      end
+
+      def dependency_model
+        ::BraceComb.dependency_model.constantize
+      end
+    end
+
     def self.included(base)
+      base.send :include, InstanceMethods
       base.send :extend, ClassMethods
     end
   end
