@@ -51,8 +51,7 @@ module BraceComb
         dependency_model.create(
           source_id: from,
           destination_id: to,
-          dependency_type: dependency_type,
-          status: :pending
+          dependency_type: dependency_type
         )
       end
 
@@ -61,8 +60,7 @@ module BraceComb
         dependency_model.create!(
           source_id: from,
           destination_id: to,
-          dependency_type: dependency_type,
-          status: :pending
+          dependency_type: dependency_type
         )
       end
 

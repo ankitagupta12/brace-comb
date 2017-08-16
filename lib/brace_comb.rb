@@ -28,7 +28,7 @@ module BraceComb
 end
 
 ActiveSupport.on_load(:active_record) do
-  include BraceComb::Helper
+  include BraceComb::Model
 end
 
 

@@ -4,6 +4,14 @@ Brace Comb is a small bit of wax built between two combs or frames to fasten the
 
 Allows setting dependency logic between entities, and declaring resolution methods and callbacks to resolve dependencies.
 
+## Background
+
+In workflow management systems, there is often a need to define that certain tasks should only begin when another task is complete.
+
+Instead of having each workflow system define tables to denote dependency relationships between tasks, this gem provides features that can create both the dependency and dependent model. These entity names are configurable based on the project needs. 
+
+In addition, it accepts methods to define how a dependency can be resolved and dependency resolution callbacks. In the same vein as active record callbacks, dependency resolution callbacks can define actions that should be executed before a dependency is resolved and after a dependency is resolved. If any before callbacks fail, then dependency resolution will also fail.
+
 ## Installation
 
 1. Add JobDependencies to your `Gemfile`.
@@ -21,12 +29,15 @@ Allows setting dependency logic between entities, and declaring resolution metho
     d. Create the dependency tables and associations using `bundle exec rake db:migrate`
     
     e. Generate the basic dependency model by running:
-       ```bundle exec rails generate brace_comb:model <insert Dependency table name here>```
+       ```bundle exec rails generate brace_comb:model ''```
 
 ## Usage
   
 1. Declare a dependency type by adding in the following to the dependency class:
-   `enum type: { shopping: 0 }`
+   ```
+     include BraceComb::Helper
+     enum type: { shopping: 0 }
+   ```
 2. Declare a dependency by typing in the following in any ActiveRecord class:
 
    a. Using a method name in the resolver
@@ -50,10 +61,7 @@ Allows setting dependency logic between entities, and declaring resolution metho
 3. Create dependencies between the dependent class by using the following helper in any instance method of a model class:
 
    `initialize_dependency from: job1, to: job2, type: 'shopping'`
-4. In order to resolve a dependency, add the following to the dependency class definition (This will be done implicitly moving forward):
-
-   `include BraceComb::Model`
-5. Resolve dependencies by using:
+5. Resolve dependencies from any active record model by using:
    ```
      dependency.resolve!(identifier: 123, status: :resolved)
    ```
