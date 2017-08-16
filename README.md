@@ -60,7 +60,13 @@ In addition, it accepts methods/procs to define the logic for dependency resolut
    ```
 3. Create dependencies between the dependent class by using the following helper in any instance method of a model class:
 
+   - When an exception needs to be raised:
+   `initialize_dependency! from: job1, to: job2, type: 'shopping'`
+
+   or
+   - When a boolean needs to be returned:
    `initialize_dependency from: job1, to: job2, type: 'shopping'`
+
 5. Resolve dependencies from any active record model by using:
    
    - When an exception needs to be raised:
