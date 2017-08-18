@@ -2,17 +2,11 @@
 
 Brace Comb is a small bit of wax built between two combs or frames to fasten them together. Brace comb is also built between a comb and adjacent wood, or between two wooden parts such as top bars.
 
-Allows setting dependency logic between entities, and declaring resolution methods and callbacks to resolve dependencies.
+This is akin to how workflows are connected to each other with dependencies.
 
 ## Description
 
-In workflow management systems, there is often a need to define that certain tasks should only begin when another task(s) is complete.
-
-## Features
-
-Instead of having each workflow system define database entities to denote dependency relationships between tasks/dependents, this gem provides features that can create both the dependency and dependent model. These entity names are configurable based on the project needs.
-
-In addition, it accepts methods/procs to define the logic for dependency resolution via resolution callbacks. In the same vein as active record callbacks, dependency resolution callbacks can define actions that should be executed before a dependency is resolved and after a dependency is resolved. If any before callbacks fail, then dependency resolution will also fail.
+In workflow management systems, there is often a need to define that certain tasks should only begin when another task(s) is complete. BraceComb can be used to define multiple types of workflows and handle each workflow consistently.
 
 ## Example
 A factory production line sytem uses pre-defined workflows with strict dependencies between tasks. In a simplified scenario, let's say we need to define a workflow in which an item on the conveyor belt must be packed before it is dispatched. In this case:
@@ -59,6 +53,8 @@ To kick-off this flow just call `dependency.resolve` and the before and after ho
        ```bundle exec rails generate brace_comb:model ''```
 
 ## Usage
+
+Entity names for dependencies and dependents are configurable and can be set in `config/initializers/brace_comb.rb` before creating the migrations.
 
 1. Declare a dependency type by adding in the following to the dependency class:
    ```
