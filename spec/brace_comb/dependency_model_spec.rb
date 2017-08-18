@@ -30,8 +30,8 @@ describe BraceComb::Model do
 
       declare_dependency type: :shopping,
                          resolver: :mark_as_complete,
-                         before_resolved: [:before_resolve1?, :before_resolve2?],
-                         after_resolved: [:complete_job]
+                         before_resolution: [:before_resolve1?, :before_resolve2?],
+                         after_resolution: [:complete_job]
     end
   end
 
@@ -106,8 +106,8 @@ describe BraceComb::Model do
         dependency_class.constantize.class_eval do
           declare_dependency type: :shopping,
                              resolver: ->(data) { data.resolved! },
-                             before_resolved: [->(_) { true }, :before_resolve?],
-                             after_resolved: [:complete_job]
+                             before_resolution: [->(_) { true }, :before_resolve?],
+                             after_resolution: [:complete_job]
         end
 
         class JobDependency

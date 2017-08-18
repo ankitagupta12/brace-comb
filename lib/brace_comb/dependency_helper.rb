@@ -4,23 +4,23 @@ module BraceComb
       # declare_dependency
       #   type: :shopping
       #   resolver: :shopping_completed
-      #   before_resolved: [:completed_status?]
-      #   after_resolved: :complete_job, Proc.new {}
+      #   before_resolution: [:completed_status?]
+      #   after_resolution: :complete_job, Proc.new {}
       # Options:
       # resolver: Methods or procs that can mark the dependency as resolved
-      # before_resolved: Checks that can be performed before a dependency is resolved.
+      # before_resolution: Checks that can be performed before a dependency is resolved.
       # If any of these return false then the dependency resolution will result in a false
       # or exception.
-      # after_resolved: if the dependency resolution succeeds, each of these methods will be
-      # executed one by one. All the subsequent after_resolved hooks will not be executed if any
-      # of the predecessor after_resolved hook throws an exception. However, this will not make
+      # after_resolution: if the dependency resolution succeeds, each of these methods will be
+      # executed one by one. All the subsequent after_resolution hooks will not be executed if any
+      # of the predecessor after_resolution hook throws an exception. However, this will not make
       # a difference to the resolution status of the dependency itself
       def declare_dependency(options = {})
         dependency_mapping = dependency_mapping_value
         dependency_mapping[options[:type]] = options.slice(
           :resolver,
-          :before_resolved,
-          :after_resolved
+          :before_resolution,
+          :after_resolution
         )
         set_dependency_mapping(dependency_mapping)
       end
@@ -51,7 +51,8 @@ module BraceComb
         dependency_model.create(
           source_id: from,
           destination_id: to,
-          dependency_type: dependency_type
+          dependency_type: dependency_type,
+          status: :pending
         )
       end
 
@@ -60,7 +61,8 @@ module BraceComb
         dependency_model.create!(
           source_id: from,
           destination_id: to,
-          dependency_type: dependency_type
+          dependency_type: dependency_type,
+          status: :pending
         )
       end
 

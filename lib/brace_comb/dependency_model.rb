@@ -10,9 +10,9 @@ module BraceComb
         dependency_mapping = self.class.
           instance_variable_get(:@dependency_mapping)[self.dependency_type.to_sym]
         ActiveRecord::Base.transaction do
-          execute_before_callbacks(dependency_mapping[:before_resolved])
+          execute_before_callbacks(dependency_mapping[:before_resolution])
           execute_resolver(dependency_mapping[:resolver], args)
-          execute_after_callbacks(dependency_mapping[:after_resolved])
+          execute_after_callbacks(dependency_mapping[:after_resolution])
         end
       end
 

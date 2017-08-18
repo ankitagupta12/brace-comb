@@ -30,8 +30,8 @@ describe BraceComb::Helper do
 
           declare_dependency type: :shopping,
                              resolver: :shopping_complete,
-                             before_resolved: [:completed_status?],
-                             after_resolved: [:complete_job]
+                             before_resolution: [:completed_status?],
+                             after_resolution: [:complete_job]
         end
       end
       it 'can declare dependency' do
@@ -39,8 +39,8 @@ describe BraceComb::Helper do
         expect(dependency_mapping).to match(
           shopping: {
             resolver: :shopping_complete,
-            before_resolved: [:completed_status?],
-            after_resolved: [:complete_job]
+            before_resolution: [:completed_status?],
+            after_resolution: [:complete_job]
           }
         )
       end
