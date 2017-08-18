@@ -8,7 +8,7 @@ Allows setting dependency logic between entities, and declaring resolution metho
 
 In workflow management systems, there is often a need to define that certain tasks should only begin when another task(s) is complete.
 
-`## Features`
+## Features
 
 Instead of having each workflow system define database entities to denote dependency relationships between tasks/dependents, this gem provides features that can create both the dependency and dependent model. These entity names are configurable based on the project needs.
 
