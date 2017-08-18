@@ -84,11 +84,11 @@ Entity names for dependencies and dependents are configurable and can be set in 
 3. Create dependencies between the dependent class by using the following helper in any instance method of a model class:
 
    - When an exception needs to be raised:
-   `initialize_dependency! from: job1, to: job2, type: 'shopping'`
+   `initialize_dependency! from: entity1.id, to: entity2.id, type: 'shopping'`
 
    or
    - When a boolean needs to be returned:
-   `initialize_dependency from: job1, to: job2, type: 'shopping'`
+   `initialize_dependency from: entity1.id, to: entity2.id, type: 'shopping'`
 
 5. Resolve dependencies from any active record model by using:
 
