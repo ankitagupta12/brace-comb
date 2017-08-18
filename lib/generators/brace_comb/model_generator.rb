@@ -11,16 +11,9 @@ module BraceComb
 
     def inject_model_content
       content = model_contents
-
-      class_path = if namespaced?
-                     class_name.to_s.split('::')
-                   else
-                     [class_name]
-                   end
-
+      class_path = [dependency_model.camelize]
       indent_depth = class_path.size - 1
-      content = content.split('\n').map { |line| '  ' * indent_depth + line } .join('\n') << '\n'
-
+      content = content.split('\n').map { |line| '  ' * indent_depth + line } .join('\n')
       inject_into_class(model_path, class_path.last, content) if model_exists?
     end
 
@@ -40,7 +33,7 @@ module BraceComb
 
     def model_contents
       <<-CONTENT
-        enum status: { pending: 0, resolved: 2 }
+        enum status: { pending: 0, resolved: 1 }
       CONTENT
     end
   end

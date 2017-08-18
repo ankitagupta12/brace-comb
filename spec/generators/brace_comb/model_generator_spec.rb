@@ -19,6 +19,7 @@ describe BraceComb::ModelGenerator, type: :generator do
           directory 'models' do
             file 'job_dependency.rb' do
               contains('class JobDependency < ApplicationRecord')
+              contains('enum status: { pending: 0, resolved: 1 }')
             end
           end
         end

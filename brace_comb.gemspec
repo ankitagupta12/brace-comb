@@ -14,7 +14,7 @@ Gem::Specification.new do |spec|
   spec.homepage      = 'https://github.com/honestbee/brace_comb'
   spec.license       = 'MIT'
 
-  spec.files         = Dir['{lib}/**/*.rb', 'bin/*', 'LICENSE', '*.md']
+  spec.files         = `git ls-files`.split("\n")
   spec.bindir        = 'exe'
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ['lib']
