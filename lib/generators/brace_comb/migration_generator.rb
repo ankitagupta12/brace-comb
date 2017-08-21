@@ -10,7 +10,7 @@ module BraceComb
     def create_migration_file
       add_migrations(dependent_table_name, 'create_dependent')
       add_migrations(dependency_table_name, 'create_dependencies')
-      add_migrations(nil, 'add_associations')
+      add_migrations('associations', 'add_associations')
     end
 
     private
@@ -23,7 +23,7 @@ module BraceComb
       else
         migration_template(
           "#{template}.rb.erb",
-          "db/migrate/#{migration_name.pluralize}.rb",
+          "db/migrate/create_#{migration_name.pluralize}.rb",
           migration_version: migration_version
         )
       end

@@ -1,5 +1,5 @@
 # This migration adds associations between the dependency and dependent
-class AddAssociations < ActiveRecord::Migration<%= migration_version %>
+class CreateAssociations < ActiveRecord::Migration<%= migration_version %>
   def change
     add_foreign_key :<%= dependency_table_name%>, :<%= dependent_table_name %>, column: :source_id, dependent: :delete
     add_foreign_key :<%= dependency_table_name%>, :<%= dependent_table_name %>, column: :destination_id, dependent: :delete

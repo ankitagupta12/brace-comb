@@ -26,12 +26,12 @@ describe BraceComb::MigrationGenerator, type: :generator do
       expect(destination_root).to have_structure {
         directory 'db' do
           directory 'migrate' do
-            migration 'jobs' do
+            migration 'create_jobs' do
               contains('class CreateJobs < ' + parent_class)
               contains('create_table :jobs do |t|')
               contains('t.timestamps null: false')
             end
-            migration 'job_dependencies' do
+            migration 'create_job_dependencies' do
               contains('create_table :job_dependencies do |t|')
               contains('class CreateJobDependencies < ' + parent_class)
               contains('t.integer :dependency_type, null: false')
@@ -40,8 +40,8 @@ describe BraceComb::MigrationGenerator, type: :generator do
               contains('t.integer :destination_id, null: false')
               contains('t.timestamps null: false')
             end
-            migration 'add_associations' do
-              contains('class AddAssociations < ' + parent_class)
+            migration 'create_associations' do
+              contains('class CreateAssociations < ' + parent_class)
               contains('add_foreign_key :job_dependencies, :jobs, column: :source_id, dependent: :delete')
               contains('add_foreign_key :job_dependencies, :jobs, column: :destination_id, dependent: :delete')
             end
