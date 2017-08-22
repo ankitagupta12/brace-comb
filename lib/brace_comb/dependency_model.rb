@@ -27,6 +27,7 @@ module BraceComb
       end
 
       def execute_after_callbacks(after_callbacks)
+        return unless after_callbacks
         after_callbacks.each do |after_callback|
           execute_callback(after_callback)
         end
@@ -43,6 +44,7 @@ module BraceComb
       end
 
       def execute_before_callbacks(before_callbacks)
+        return unless before_callbacks
         before_callbacks.each do |before_callback|
           result = execute_callback(before_callback)
           raise BraceComb::Exceptions::CallbackFailure.new unless result

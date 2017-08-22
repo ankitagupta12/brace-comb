@@ -128,6 +128,21 @@ describe BraceComb::Model do
         expect(result).to be true
       end
     end
+
+    context 'resolve without callbacks' do
+      before do
+        dependency_class.constantize.class_eval do
+          declare_dependency type: :shopping,
+                             resolver: ->(data) { data.resolved! }
+        end
+      end
+
+      it 'resolves dependency if all before resolve hooks are satisfied' do
+        result = dependency.resolve
+        expect(dependency).to be_resolved
+        expect(result).to be true
+      end
+    end
   end
 
   context 'resolve' do

@@ -15,8 +15,8 @@ describe BraceComb::InitializerGenerator, type: :generator do
 
     it 'creates brace comb initializer' do
       assert_file 'config/initializers/brace_comb.rb', "BraceComb.setup do |config|\n"\
-        " config.dependent_table_name = 'jobs'\n"\
-        " config.dependency_table_name = 'job_dependencies'\n"\
+        "  config.dependent_table_name = 'jobs'\n"\
+        "  config.dependency_table_name = 'job_dependencies'\n"\
         "end"
     end
   end

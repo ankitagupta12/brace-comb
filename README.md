@@ -61,7 +61,7 @@ Entity names for dependencies and dependents are configurable and can be set in 
      include BraceComb::Helper
      enum type: { shopping: 0 }
    ```
-2. Declare a dependency by typing in the following in any ActiveRecord class:
+2. Declare a dependency by typing in the following in any ActiveRecord class. Only `resolver` is compulsory whereas `before_resolution` and `after_resolution` are optional.
 
    a. Using a method name in the resolver
    ```
