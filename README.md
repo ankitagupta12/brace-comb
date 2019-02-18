@@ -50,7 +50,7 @@ To kick-off this flow just call `dependency.resolve` and the before and after ho
     d. Create the dependency tables and associations using `bundle exec rake db:migrate`
 
     e. Generate the basic dependency model by running:
-       ```bundle exec rails generate brace_comb:model ''```
+       ```bundle exec rails generate brace_comb:model <insert model name here>```
 
 ## Usage
 

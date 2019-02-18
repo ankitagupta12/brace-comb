@@ -33,7 +33,7 @@ module BraceComb
 
     def model_contents
       <<-CONTENT
-        enum status: { pending: 0, resolved: 1 }
+  enum status: { pending: 0, resolved: 1 }
       CONTENT
     end
   end
