@@ -1,7 +1,7 @@
 require 'spec_helper'
 require 'brace_comb/dependency_helper'
 require 'brace_comb/dependency_model'
-require 'pry'
+
 describe BraceComb::Model do
   dependency_class = ::BraceComb.dependency_model
   dependent_class = ::BraceComb.dependent_model
