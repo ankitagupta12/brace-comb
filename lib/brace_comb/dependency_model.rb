@@ -1,4 +1,5 @@
 require 'brace_comb/exceptions/callback_failure'
+require 'brace_comb/dependency_helper'
 
 module BraceComb
   module Model
@@ -28,7 +29,7 @@ module BraceComb
 
       def execute_after_callbacks(after_callbacks)
         return unless after_callbacks
-        after_callbacks.each do |after_callback|
+        after_callbacks.map do |after_callback|
           execute_callback(after_callback)
         end
       end
@@ -63,6 +64,8 @@ module BraceComb
 
     def self.included(base)
       base.send :include, InstanceMethods
+      base.send :include, BraceComb::Helper::InstanceMethods
+      base.send :extend, BraceComb::Helper::ClassMethods
     end
   end
 end

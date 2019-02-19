@@ -23,7 +23,7 @@ describe BraceComb::Model do
 
   before do
     dependency_class.constantize.class_eval do
-      include BraceComb::Helper
+      include BraceComb::Model
 
       enum dependency_type: { shopping: 0 }
       enum status: { pending: 0, resolved: 1 }
@@ -122,10 +122,10 @@ describe BraceComb::Model do
       end
 
       it 'resolves dependency if all before resolve hooks are satisfied' do
-        result = dependency.resolve
+        result = dependency.resolve!
         expect(dependency).not_to receive(:complete_job).and_call_original
         expect(dependency).to be_resolved
-        expect(result).to be true
+        expect(result).to eq [true]
       end
     end
 

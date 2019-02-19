@@ -3,7 +3,6 @@ require 'dry-configurable'
 require 'brace_comb/version'
 require 'brace_comb/config'
 require 'brace_comb/dependency_model'
-require 'brace_comb/dependency_helper'
 
 module BraceComb
   class << self
